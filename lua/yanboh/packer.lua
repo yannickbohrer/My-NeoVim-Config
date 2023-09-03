@@ -100,6 +100,20 @@ return require('packer').startup(function(use)
     use('tpope/vim-rhubarb')
     use('junegunn/gv.vim')
 
+    -- lualine
+    use({
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    })
+
+    -- comment
+    use({
+        'numToStr/Comment.nvim',
+        --[[config = function()
+            require('Comment').setup()
+        end--]]
+    })
+
     -- colorschemes
     use({ "catppuccin/nvim", as = "catppuccin" })
     use({
@@ -122,10 +136,4 @@ return require('packer').startup(function(use)
     })
     use("savq/melange-nvim")
     use('sainnhe/sonokai')
-
-    -- lualine
-    use({
-        'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-    })
 end)
