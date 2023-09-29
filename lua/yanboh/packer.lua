@@ -27,6 +27,9 @@ return require('packer').startup(function(use)
     -- undotree
     use('mbbill/undotree')
 
+    -- formatting
+    use('jose-elias-alvarez/null-ls.nvim')
+
     -- debugger
     --[[
     use('mfussenegger/nvim-dap')
