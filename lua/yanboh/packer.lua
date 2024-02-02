@@ -22,27 +22,13 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/playground')
     use('windwp/nvim-ts-autotag')
-    --use('mrjones2014/nvim-ts-rainbow')
+    use('mrjones2014/nvim-ts-rainbow')
 
     -- undotree
     use('mbbill/undotree')
 
     -- formatting
     use('jose-elias-alvarez/null-ls.nvim')
-
-    -- debugger
-    --[[
-    use('mfussenegger/nvim-dap')
-    use('leoluz/nvim-dap-go')
-    use({
-        "rcarriga/nvim-dap-ui",
-        requires = { "mfussenegger/nvim-dap" }
-    })
-    use('theHamsta/nvim-dap-virtual-text')
-    use('nvim-telescope/telescope-dap.nvim')
-
-    use('folke/neodev.nvim')
-    --]]
 
     -- filetree
     use({
@@ -60,6 +46,10 @@ return require('packer').startup(function(use)
     -- bufferline
     use({ 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' })
 
+    -- mason
+    use("williamboman/mason.nvim")
+    use("williamboman/mason-lspconfig.nvim")
+
     -- lsp
     use({
         'VonHeikemen/lsp-zero.nvim',
@@ -67,23 +57,12 @@ return require('packer').startup(function(use)
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' }, -- Required
-            {
-                -- Optional
-                'williamboman/mason.nvim',
-                run = function()
-                    pcall(vim.cmd, 'MasonUpdate')
-                end,
-            },
-            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },     -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' },     -- Required
+            { 'hrsh7th/nvim-cmp' },      -- Required
+            { 'hrsh7th/cmp-nvim-lsp' },  -- Required
+            { 'L3MON4D3/LuaSnip' },      -- Required
         }
     })
-    use({ 'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" } })
-    -- use({'mfussenegger/nvim-jdtls'})
 
     -- which key
     use({
@@ -91,19 +70,11 @@ return require('packer').startup(function(use)
         config = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
-            require("which-key").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
         end
     })
 
     -- git
-    use('tpope/vim-fugitive')
     use('mhinz/vim-signify')
-    use('tpope/vim-rhubarb')
-    use('junegunn/gv.vim')
 
     -- lualine
     use({
@@ -112,11 +83,15 @@ return require('packer').startup(function(use)
     })
 
     -- comment
+    use({ 'numToStr/Comment.nvim', })
+
+    -- terminal integration
     use({
-        'numToStr/Comment.nvim',
-        --[[config = function()
-            require('Comment').setup()
-        end--]]
+        "akinsho/toggleterm.nvim",
+        tag = '*',
+        config = function()
+            require("toggleterm").setup()
+        end
     })
 
     -- colorschemes
@@ -128,17 +103,20 @@ return require('packer').startup(function(use)
             vim.cmd('colorscheme kanagawa')
         end
     })
-    use('JoosepAlviste/palenightfall.nvim')
+    use({ 'JoosepAlviste/palenightfall.nvim' })
     use({
         "navarasu/onedark.nvim",
         as = "onedark"
     })
     -- use({ 'rose-pine/neovim', as = 'rose-pine' })
-    use("EdenEast/nightfox.nvim")
+    use({ "EdenEast/nightfox.nvim" })
     use({
         'folke/tokyonight.nvim',
         as = "tokyonight",
     })
-    use("savq/melange-nvim")
-    use('sainnhe/sonokai')
+    use({ "savq/melange-nvim" })
+    use({ 'sainnhe/sonokai' })
+
+    -- be good hehe
+    use({ "ThePrimeagen/vim-be-good" })
 end)

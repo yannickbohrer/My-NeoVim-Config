@@ -62,5 +62,3 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- toggle nvim-tree
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true })
 
--- nvim fugitive (git)
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git)

@@ -53,8 +53,14 @@ nvim_tree.setup {
                     deleted = "󰆴",
                     ignored = "",
                 },
+
             },
         },
+    },
+    git = {
+        enable = true,
+        ignore = false,
+        timeout = 500,
     },
     diagnostics = {
         enable = true,
@@ -68,6 +74,6 @@ nvim_tree.setup {
     },
     view = {
         width = 45,
-        side = "left",
+        side = "right",
     },
 }
